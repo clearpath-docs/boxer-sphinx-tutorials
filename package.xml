@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <name>boxer_tutorials</name>
+  <version>0.0.1</version>
+  <description>Boxer's tutorials.</description>
+  <maintainer email="civerachb@clearpathrobotics.com">Chris Iverach-Brereton</maintainer>
+
+  <license>BSD</license>
+
+  <!-- TODO: fix the URL -->
+  <url type="website">http://wiki.ros.org/ClearpathRobotics</url>
+  <author email="mpurvis@clearpathrobotics.com">Mike Purvis</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>rosdoc_lite</build_depend>
+
+  <export>
+  </export>
+</package>
