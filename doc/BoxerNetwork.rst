@@ -1,8 +1,8 @@
-Setting Up Moose's Network
+Setting Up Boxer's Network
 ===========================
 
-Moose is equipped with an 802.11b/g/n compatible Wi-Fi module. On currently-shipping units, this
-is a `Microhard PX2`__.  Moose does not come equipped with a bluetooth module by default, though
+Boxer is equipped with an 802.11b/g/n compatible Wi-Fi module. On currently-shipping units, this
+is a `Microhard PX2`__.  Boxer does not come equipped with a bluetooth module by default, though
 an adapter can be connected to the onboard `Advantech ARK-3520P`__ PC.
 
 .. _Microhard: http://www.microhardcorp.com/pX2.php
@@ -15,22 +15,22 @@ __ Advantech_
 First Connection
 ----------------
 
-By default, Moose's wireless is in client mode, looking for the wireless network at the Clearpath factory. In
+By default, Boxer's wireless is in client mode, looking for the wireless network at the Clearpath factory. In
 order to set it up to connect to your own network, you'll have to open up the chassis and connect a network cable to
-the PC's ``STATIC`` port. The other end of this cable should be connected to your laptop, and you should give yourself an IP address in the ``192.168.131.x`` space, such as ``192.168.131.50``. Then, make the connection to Moose's default
+the PC's ``STATIC`` port. The other end of this cable should be connected to your laptop, and you should give yourself an IP address in the ``192.168.131.x`` space, such as ``192.168.131.50``. Then, make the connection to Boxer's default
 static IP:
 
 .. code-block:: bash
 
     ssh administrator@192.168.131.1
 
-The default password is ``clearpath``. You should now be logged into Moose as the administrator user.
+The default password is ``clearpath``. You should now be logged into Boxer as the administrator user.
 
 
 Connecting to Wifi Access Point
 --------------------------------
 
-Moose's standard wireless network manager is wicd_. To connect to an access point in your lab, run:
+Boxer's standard wireless network manager is wicd_. To connect to an access point in your lab, run:
 
 .. code-block:: bash
 
@@ -40,14 +40,14 @@ You should see a browsable list of networks which the robot has detected. Use ar
 would like to connect to, and then press the right arrow to configure it. You can enter your network's password
 near the bottom of the page, and note that you must select the correct encryption scheme; most modern networks
 use ``WPA1/2 Passphrase``, so if that's you, make sure that option is selected. You also likely want to select
-the option to automatically reconnect to this network, so that Moose will be there for you on your wireless
+the option to automatically reconnect to this network, so that Boxer will be there for you on your wireless
 automatically in the future.
 
 When you're finished, press F10 to save, and then C to connect.
 
 Wicd will tell you in the footer what IP address it was given by your lab's access point, so you can now log out,
 remove the network cable, and reconnect over wireless. When you've confirmed that all this is working as expected,
-close up Moose's chassis.
+close up Boxer's chassis.
 
 .. _wicd: https://launchpad.net/wicd
 
@@ -57,43 +57,43 @@ close up Moose's chassis.
 Remote ROS Connection
 ---------------------
 
-To use ROS desktop tools, you'll need your computer to be able to connect to Moose's ROS master. This can be a
+To use ROS desktop tools, you'll need your computer to be able to connect to Boxer's ROS master. This can be a
 tricky process, but we've tried to make it as simple as possible.
 
-In order for the ROS tools on your computer to talk to Moose, they need to know two things:
+In order for the ROS tools on your computer to talk to Boxer, they need to know two things:
 
 - How to find the ROS master, which is set in the ``ROS_MASTER_URI`` environment variable, and
 - How processes on the other computer can find *your computer*, which is the ``ROS_IP`` environment variable.
 
-The suggested pattern is to create a file in your home directory called ``remote-moose.sh`` with the following
+The suggested pattern is to create a file in your home directory called ``remote-boxer.sh`` with the following
 contents:
 
 .. code-block:: bash
 
-    export ROS_MASTER_URI=http://cpr-moose-0001:11311  # Moose's hostname
+    export ROS_MASTER_URI=http://cpr-boxer-0001:11311  # Boxer's hostname
     export ROS_IP=10.25.0.102                          # Your laptop's wireless IP address
 
-If your network doesn't already resolve Moose's hostname to its wireless IP address, you may need to add
+If your network doesn't already resolve Boxer's hostname to its wireless IP address, you may need to add
 a corresponding line to your computer's ``/etc/hosts`` file:
 
 .. code-block:: bash
 
-    10.25.0.101 cpr-moose-0001
+    10.25.0.101 cpr-boxer-0001
 
-Then, when you're ready to communicate remotely with Moose, you can source that script like so, thus defining
+Then, when you're ready to communicate remotely with Boxer, you can source that script like so, thus defining
 those two key environment variables in the present context.
 
 .. code-block:: bash
 
-    source remote-moose.sh
+    source remote-boxer.sh
 
 Now, when you run commands like ``rostopic list``, ``rostopic echo``, ``rosnode list``, and others, the output
-you see should reflect the activity on Moose's ROS master, rather than on your own machine. Once you've
+you see should reflect the activity on Boxer's ROS master, rather than on your own machine. Once you've
 verified the basics (list, echo) from the prompt, try launching some of the standard visual ROS tools:
 
 .. code-block:: bash
 
-    roslaunch moose_viz view_robot.launch
+    roslaunch boxer_viz view_robot.launch
     rosrun rqt_robot_monitor rqt_robot_monitor
     rosrun rqt_console rqt_console
 
@@ -110,13 +110,13 @@ Advanced: Hosting a Wifi Access Point
 -------------------------------------
 
 The default network manager, ``wicd``, only supports joining existing networks. It does not support creating its own wireless AP.
-However, there is experimental support in Moose for a modern network manager called connman_, which does.
+However, there is experimental support in Boxer for a modern network manager called connman_, which does.
 
 .. _connman: https://01.org/connman
 
 .. warning::
 
-             You are unlikely to damage your hardware by switching Moose from wicd to connman, but it's possible
+             You are unlikely to damage your hardware by switching Boxer from wicd to connman, but it's possible
              you could end up with a platform which will need to be `reflashed back to the factory state` in
              order to be usable. If you're comfortable with this and have backed up your data, proceed.
 
@@ -157,7 +157,7 @@ Now, use the connmanctl command-line interface to set up an AP, which connman ca
 
     $ connmanctl
     connmanctl> enable wifi
-    connmanctl> tether wifi on Moose clearpath
+    connmanctl> tether wifi on Boxer clearpath
 
 If you want to use connman to connect to another AP rather than host:
 

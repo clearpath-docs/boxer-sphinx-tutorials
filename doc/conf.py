@@ -22,7 +22,7 @@ extlinks = {
 source_suffix = '.rst'
 master_doc = 'index'
 
-project = u'Moose Tutorials'
+project = u'Boxer Tutorials'
 copyright = u'2015, Clearpath Robotics'
 
 # Get version number from package.xml.
@@ -34,7 +34,7 @@ author = tree.find('author').text
 html_theme = 'theme'
 html_theme_path = ["."]
 
-htmlhelp_basename = 'moose_tutorialsdoc'
+htmlhelp_basename = 'boxer_tutorialsdoc'
 templates_path = ['./templates']
 html_static_path = ['./theme/static']
 
@@ -49,14 +49,14 @@ rst_prolog = """
 .. |ros_distro| replace:: kinetic
 .. |ros_path| replace:: ``/opt/ros/kinetic``
 .. |rosd_path| replace:: ``/etc/ros/kinetic/ros.d``
-.. |dpkg_s_firmware| replace:: ``dpkg -s ros-kinetic-moose-firmware``
+.. |dpkg_s_firmware| replace:: ``dpkg -s ros-kinetic-boxer-firmware``
 """
 
 # substitutions for substitution-code-block -- THESE ONLY WORK IN CODE BLOCKS
 substitutions = [
     ('|ros_distro|', 'kinetic'),
     ('|ubuntu_distro|', 'xenial'),
-    ('|fw_path|', '/opt/ros/kinetic/share/moose_firmware/mcu.bin'),
+    ('|fw_path|', '/opt/ros/kinetic/share/boxer_firmware/mcu.bin'),
 ]
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
@@ -99,6 +99,6 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'MooseTutorials.tex', project,
+    (master_doc, 'BoxerTutorials.tex', project,
      author, 'manual'),
 ]

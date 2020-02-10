@@ -1,23 +1,23 @@
 Configuration & Environment Variables
 =========================================
 
-.. image:: graphics/moose_urdf_banner.png
+.. image:: graphics/boxer_urdf_banner.png
 
-The moose_description package is the URDF robot description for Moose UGV.
+The boxer_description package is the URDF robot description for Boxer UGV.
 
-.. _Source: https://github.com/moose-cpr/moose
+.. _Source: https://github.com/boxer-cpr/boxer
 
 
 Overview
 ---------
 
-This package provides a `URDF <http://wiki.ros.org/urdf>`_ model of Moose.  For an example launchfile to use in visualizing this model, see `moose_viz <http://wiki.ros.org/moose_viz>`_.
+This package provides a `URDF <http://wiki.ros.org/urdf>`_ model of Boxer.  For an example launchfile to use in visualizing this model, see `boxer_viz <http://wiki.ros.org/boxer_viz>`_.
 
 
 Accessories
 ------------
 
-Moose has a suite of optional payloads called accessories. These payloads can be enabled and placed on the robot using environment variables specified at the time the `xacro <http://wiki.ros.org/xacro>`_ is rendered to URDF. Available accessory vars are:
+Boxer has a suite of optional payloads called accessories. These payloads can be enabled and placed on the robot using environment variables specified at the time the `xacro <http://wiki.ros.org/xacro>`_ is rendered to URDF. Available accessory vars are:
 
 .. raw:: html
 
@@ -55,7 +55,7 @@ Moose has a suite of optional payloads called accessories. These payloads can be
     </tr>
     <tr>  <td><span class="anchor" id="line-11"></span><p><tt>MOOSE_NAVSAT_SMART6_MOUNT</tt> </p></td>
       <td><p><tt>navsat</tt> </p></td>
-      <td><p>The mount on the robot model that the GPS antenna is mounted to.  See the Moose URDF and <tt>MOOSE_URDF_EXTRAS</tt> for more details on mount points.</p></td>
+      <td><p>The mount on the robot model that the GPS antenna is mounted to.  See the Boxer URDF and <tt>MOOSE_URDF_EXTRAS</tt> for more details on mount points.</p></td>
     </tr>
     <tr>  <td><span class="anchor" id="line-11"></span><p><tt>MOOSE_NAVSAT_SMART6_PORT</tt> </p></td>
       <td><p><tt>/dev/ttyS1</tt> </p></td>
@@ -87,7 +87,7 @@ As an alternative to individually specifying each accessory, some fixed configur
 ====================================  ====================================================
 Config:                               Description:
 ====================================  ====================================================
-base                                  Base Moose, includes IMU and GPS
+base                                  Base Boxer, includes IMU and GPS
 arm_mount                             Includes mounting points for am arm payload
 bulkhead                              ??? TODO
 empty                                 Includes no accessories at all

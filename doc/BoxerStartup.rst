@@ -1,7 +1,7 @@
-Extending Moose's Startup
+Extending Boxer's Startup
 ==========================
 
-Now that's you've had Moose for a while, you may be interested in how to extend it— perhaps add some more payloads,
+Now that's you've had Boxer for a while, you may be interested in how to extend it— perhaps add some more payloads,
 or augment the URDF.
 
 
@@ -28,12 +28,12 @@ from source. For this reason, Clearpath platforms use a wrapper setup file, loca
 
     source /etc/ros/setup.bash
 
-This is the setup file which gets sourced by Moose's background launch job, and in the default configuration,
+This is the setup file which gets sourced by Boxer's background launch job, and in the default configuration,
 it is also sourced on your login session. For this reason it can be considered the "global" setup file for
-Moose's ROS installation.
+Boxer's ROS installation.
 
 This file sets some environment variables and then sources a chosen ROS workspace, so it is one of your primary
-modification points for altering how Moose launches.
+modification points for altering how Boxer launches.
 
 
 Launch Files
@@ -41,7 +41,7 @@ Launch Files
 
 The second major modification point is the |rosd_path| directory. This location contains the
 launch files associated with the ``ros`` background job. If you add launch files here, they will be launched with
-Moose's startup.
+Boxer's startup.
 
 However, it's important to note that in the default configuration, any launch files you add may only reference ROS
 software installed in |ros_path|. If you want to launch something from workspace in
@@ -52,10 +52,10 @@ one from ``opt``.
 Adding URDF
 -----------
 
-There are two possible approaches to augmenting Moose's URDF. The first is that you may simply set the
+There are two possible approaches to augmenting Boxer's URDF. The first is that you may simply set the
 ``MOOSE_URDF_EXTRAS`` environment variable in ``/etc/ros/setup.bash``. By default, it points to an empty dummy file,
-but you can point it to a file of additional links and joints which you would like mixed into Moose's URDF (via
+but you can point it to a file of additional links and joints which you would like mixed into Boxer's URDF (via
 xacro) at runtime.
 
 The second, more sophisticated way to modify the URDF is to create a *new* package for your own robot, and build
-your own URDF which wraps the one provided by :roswiki:`moose_description`.
+your own URDF which wraps the one provided by :roswiki:`boxer_description`.

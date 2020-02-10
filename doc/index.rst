@@ -33,6 +33,7 @@ skip the introductory chapters and jump straight to these ones.
     Overview <self>
     BoxerInstallation
     BoxerSimulation
+    BoxerNavigation
     BoxerDriving
     BoxerNetwork
     BoxerStartup

@@ -1,10 +1,10 @@
-Driving Moose
+Driving Boxer
 ===============
 
-.. image:: graphics/moose_driving_banner.png
-    :alt: Moose Driving
+.. image:: graphics/boxer_driving_banner.png
+    :alt: Boxer Driving
 
-Moose can either drive autonomously, be :doc:`controlled through ROS messages <MooseSimulation>`, or you
+Boxer can either drive autonomously, be :doc:`controlled through ROS messages <BoxerSimulation>`, or you
 can use the supplied remote control to teleoperate it.
 
 
@@ -13,7 +13,7 @@ Safety Precautions
 
 .. warning::
 
-    Moose is a large, heavy, robot capable of reaching high speeds.  Careless driving can cause harm to the operator,
+    Boxer is a large, heavy, robot capable of reaching high speeds.  Careless driving can cause harm to the operator,
     bystanders, the robot, or other property.  Always remain vigilant, ensure you have a clear line of sight to the
     robot, and operate the robot at safe speeds.
 
@@ -21,7 +21,7 @@ Safety Precautions
 Remote Control
 -----------------
 
-Moose's uses a standard Futaba remote control radio transmitter.  To operate the remote, first power it on by sliding
+Boxer's uses a standard Futaba remote control radio transmitter.  To operate the remote, first power it on by sliding
 the power switch to the ON position, as indicated in the image below:
 
 .. warning
@@ -30,7 +30,7 @@ the power switch to the ON position, as indicated in the image below:
     yourself with the operation of the remote.  Turn the knob slowly clockwise to get the robot moving.
 
 .. image:: graphics/futaba.png
-   :alt: Moose's remote control
+   :alt: Boxer's remote control
 
 To drive the robot, the spring-loaded deadman switch in the upper-right corner must be held down.  Releasing this
 switch will prevent the robot from moving.
@@ -41,10 +41,10 @@ The lever on the left controls the robot's speed and the lever on the right cont
 E-Stop Remote
 ----------------
 
-Moose includes a remote emergency-stop ("e-stop"), which looks like this:
+Boxer includes a remote emergency-stop ("e-stop"), which looks like this:
 
 .. image:: graphics/wireless-stop-remote.png
-   :alt: Moose's e-stop remote
+   :alt: Boxer's e-stop remote
 
 To operate the e-stop:
 
@@ -67,7 +67,7 @@ the remote control, and the second operating the e-stop remote.
 E-Stop Buttons
 -------------------
 
-Moose is also equipped with 4 emergency stop buttons, located on the 4 corners of the robot.  Pressing any of these
+Boxer is also equipped with 4 emergency stop buttons, located on the 4 corners of the robot.  Pressing any of these
 buttons will cut power to the motors, just like the STOP button on the e-stop remote.  To disengage the emergency
 stop, simply twist the button in the direction indicated by the arrows.
 
@@ -78,7 +78,7 @@ fully powered down.
 Body Lights
 --------------
 
-Moose includes four RGB LED panels, located on the four corners of the chassis.  These lights express system status
+Boxer includes four RGB LED panels, located on the four corners of the chassis.  These lights express system status
 according to the table below.  In the absence of any of the low-level conditions, they can be commanded from ROS
 to display indications from autonomy or other high-level software.
 
@@ -92,4 +92,4 @@ Headlights & Taillights   The front lights are solid white, rear lights are soli
 =======================   ========================================================================================================================================================================
 
 .. image:: graphics/taillight.jpg
-   :alt: Moose's taillight
+   :alt: Boxer's taillight
