@@ -1,9 +1,6 @@
 Driving Boxer
 ===============
 
-.. image:: graphics/boxer_driving_banner.png
-    :alt: Boxer Driving
-
 Boxer can either drive autonomously, be :doc:`controlled through ROS messages <BoxerSimulation>`, or you
 can use the supplied remote control to teleoperate it.
 
@@ -13,7 +10,7 @@ Safety Precautions
 
 .. warning::
 
-    Boxer is a large, heavy, robot capable of reaching high speeds.  Careless driving can cause harm to the operator,
+    Despite its small size, Boxer is capable of reaching high speeds.  Careless driving can cause harm to the operator,
     bystanders, the robot, or other property.  Always remain vigilant, ensure you have a clear line of sight to the
     robot, and operate the robot at safe speeds.
 
@@ -21,55 +18,43 @@ Safety Precautions
 Remote Control
 -----------------
 
-Boxer's uses a standard Futaba remote control radio transmitter.  To operate the remote, first power it on by sliding
-the power switch to the ON position, as indicated in the image below:
+Boxer uses a standard Sony Playstation 4 controller for teleoperation.  The left thumb stick is used to control the
+robot's speed and direction.  Either L1 or L2 must be held down at all times while driving the robot.  Holding R1
+will enable the robot to drive at maximum speed, while holding L1 will restrict the robot's maximum speed.
+
+.. image:: graphics/ps4_controller.jpg
+   :alt: Boxer's remote control
 
 .. warning
 
-    The speed adjustment knob in the upper-left should be turned completely counterclockwise while familiarizing
-    yourself with the operation of the remote.  Turn the knob slowly clockwise to get the robot moving.
+    While familiarizing yourself with the robot we recommend operating at low speed by holding L1.  Only engage
+    full speed (by holding R1) once you are familiar with the robot and there is a safe distance of at least 3m
+    around the robot.
 
-.. image:: graphics/futaba.png
-   :alt: Boxer's remote control
+If your controller is not pairing correctly with the robot, you can re-pair it by following these steps:
 
-To drive the robot, the spring-loaded deadman switch in the upper-right corner must be held down.  Releasing this
-switch will prevent the robot from moving.
+1. Ensure that the controller's batteries have sufficient charge
+2. Press and hold the Share & PS buttons on the controller until the pairing light flashes rapidly white
+3. Run the following command on Boxer:
 
-The lever on the left controls the robot's speed and the lever on the right controls the robot's rotation.
+.. code-block:: bash
 
+    sudo ds4drv-pair
 
-E-Stop Remote
-----------------
-
-Boxer includes a remote emergency-stop ("e-stop"), which looks like this:
-
-.. image:: graphics/wireless-stop-remote.png
-   :alt: Boxer's e-stop remote
-
-To operate the e-stop:
-
-# Twist the red button in the direction indicated by the arrows to take it out of the
-stopped state
-# Press and hold the green START button until the battery LED indicator turns green
-# Press the button labelled "RELEASE" with 3 seconds, followed by the START button again
-
-The battery LED should now rapidly blink green, indicating that is is paired with the receiver on the robot.  To
-disengage the stop, press START once again.
-
-If for any reason the robot must be halted immediately, press the red STOP button.  This will immediately cut
-power to the robot's motors.
-
-During teleoperation we recommend having at least two people present and monitoring the robot at all times: one using
-the remote control, and the second operating the e-stop remote.
-
+The controller should now be paired.  Test it by pressing L1 and using the left control stick.
 
 
 E-Stop Buttons
 -------------------
 
-Boxer is also equipped with 4 emergency stop buttons, located on the 4 corners of the robot.  Pressing any of these
-buttons will cut power to the motors, just like the STOP button on the e-stop remote.  To disengage the emergency
+Boxer is equipped with 1 emergency stop button, located on the front the robot.  Pressing this
+button will cut power to the motors.  To disengage the emergency
 stop, simply twist the button in the direction indicated by the arrows.
+
+.. note::
+
+    Some newer Boxers have an additional emergency stop button located on the back of the robot.  This button operates
+    exactly the same, and pressing either button will cut all power to the robot's drive motors.
 
 Whenever you need to perform maintenance on the robot we recommend engaging the emergency-stop if the robot cannot be
 fully powered down.
@@ -78,18 +63,12 @@ fully powered down.
 Body Lights
 --------------
 
-Boxer includes four RGB LED panels, located on the four corners of the chassis.  These lights express system status
-according to the table below.  In the absence of any of the low-level conditions, they can be commanded from ROS
-to display indications from autonomy or other high-level software.
+Boxer includes RGB LED strips around its body.  These lights express system status according to the table below.
+In the absence of any of the low-level conditions, they can be commanded from ROS to display indications from autonomy
+or other high-level software.
 
 =======================   ========================================================================================================================================================================
 Color                     Meaning
 =======================   ========================================================================================================================================================================
-Solid Red                 MCU is not in contact with the PC.  Possibly due to a loose cable, firmware malfunction, or initialization error.
-Flashing Red              E-Stop is engaged.  Disenage the emergency stop to clear.
-Flashing Yellow           Motor drivers are initializing.  There is a short initialization period after startup and after disengaging the e-stop during which the robot cannot drive
-Headlights & Taillights   The front lights are solid white, rear lights are solid red.  This indicates the robot is in normal operation.  NOTE: only in this state can the lights be overridden by autonomy or other software.
+??? TODO                  ??? TODO
 =======================   ========================================================================================================================================================================
-
-.. image:: graphics/taillight.jpg
-   :alt: Boxer's taillight
