@@ -1,7 +1,15 @@
 Mapping & Navigation with Boxer
 ===================================
 
-This section explains how to use three different navigation modes for BoxerL
+.. note::
+
+    Before you can run the commands in this tutorial, make sure to install Boxer's navigation packages:
+
+    .. substitution-code-block:: bash
+
+        sudo apt-get install ros-|ros_distro|-boxer-navigation
+
+This section explains how to use three different navigation modes for Boxer.
 
 * Navigating in an odometric frame without a map,
 * Creating a map using gmapping
