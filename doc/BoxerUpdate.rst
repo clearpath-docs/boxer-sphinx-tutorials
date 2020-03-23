@@ -55,13 +55,9 @@ version in the ``/status`` message.
 Starting From Scratch
 ---------------------
 
-.. warning::
 
-    These instructions have not been rewritten for Boxer yet; there may be missing steps or additional information needed
-
-If Boxer's computer has become inoperable, or for any reason you want to restore it to the factory state, begin
-by opening Boxer's computer box, located on the rear of the robot.  The PC is easily accessible with USB, network,
-and video ports available.
+If Boxer's computer has become inoperable, or for any reason you want to restore it to the factory state, you can
+reinstall the operating system by following the procedure below:
 
 1. Download the latest operating system image for Boxer from http://packages.clearpathrobotics.com/stable/images/latest/
 2. Use unetbootin__ or rufus__ (Windows only) to write the ISO image to a USB memory stick
