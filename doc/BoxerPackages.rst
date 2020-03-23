@@ -27,11 +27,15 @@ Boxer has a suite of optional payloads called accessories. These payloads can be
     </tr>
     <tr>  <td><span class="anchor" id="line-11"></span><p><tt>BOXER_CONTROL_EXTRAS</tt> </p></td>
       <td><p><tt>0</tt> </p></td>
-      <td><p>??? TODO</p></td>
+      <td><p>If <tt>1</tt> then the file specified by <tt>BOXER_CONTROL_EXRAS_PATH</tt> will be loadeds</p></td>
+    </tr>
+    <tr>  <td><span class="anchor" id="line-11"></span><p><tt>BOXER_CONTROL_EXTRAS_PATH</tt> </p></td>
+      <td><p><i>undefined</i> </p></td>
+      <td><p>The path to a file containing additional custom controls</p></td>
     </tr>
     <tr>  <td><span class="anchor" id="line-11"></span><p><tt>BOXER_GPIO</tt> </p></td>
       <td><p><tt>0</tt> </p></td>
-      <td><p>??? TODO</p></td>
+      <td><p>If set to <tt>1</tt> the GPIO driver will be enabled.</p></td>
     </tr>
     <tr>  <td><span class="anchor" id="line-11"></span><p><tt>BOXER_URDF_EXTRAS</tt> </p></td>
       <td><p><tt>empty.urdf</tt> </p></td>
