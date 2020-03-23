@@ -26,11 +26,28 @@ If you see any errors, please `get in touch`_ and we'll see if we can get you so
 MCU Firmware Update
 -------------------
 
-.. warning::
+When you update packages, there is periodically a new version of Boxer'ss firmware available. You will know this
+is the case if the firmware version number in the ``/status`` message does not match the version output by
+``dpkg -s ros-kinetic-boxer-firmware``. In the future there will be an automated check for this which outputs
+a diagnostics warning when a firmware update is available to be applied.
 
-    These instructions have not been rewritten for Boxer yet; there may be missing steps or additional information needed
+If new firmware is available, follow the below procedure to flash it to Boxer's MCU:
 
-??? TODO
+1. Place Boxer up on blocks. Firmware loading does not usually result in unintended motion, but it's safest when
+   off the ground.
+2. Log into Boxer either over SSH or by connecting a monitor, mouse, and keyboard to the robot.
+3. Run the following command to update Boxer's MCU firmware:
+
+.. code-block:: bash
+
+    rosrun boxer_firmware upload
+
+This command may take several seconds to complete.  Do not power-cycle the robot until uploading the firmware is
+finished.
+
+Once the command has finished, we recommend power-cycling the robot.  Once the robot reboots double-check that
+the firmware is up-to-date by comparing the output of ``dpkg -s ros-kinetic-boxer-firmware`` with the firmware
+version in the ``/status`` message.
 
 
 .. _scratch:
