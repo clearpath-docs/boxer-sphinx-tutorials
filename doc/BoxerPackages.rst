@@ -27,7 +27,7 @@ Boxer has a suite of optional payloads called accessories. These payloads can be
     </tr>
     <tr>  <td><span class="anchor" id="line-11"></span><p><tt>BOXER_CONTROL_EXTRAS</tt> </p></td>
       <td><p><tt>0</tt> </p></td>
-      <td><p>If <tt>1</tt> then the file specified by <tt>BOXER_CONTROL_EXRAS_PATH</tt> will be loadeds</p></td>
+      <td><p>If <tt>1</tt> then the file specified by <tt>BOXER_CONTROL_EXRAS_PATH</tt> will be loaded</p></td>
     </tr>
     <tr>  <td><span class="anchor" id="line-11"></span><p><tt>BOXER_CONTROL_EXTRAS_PATH</tt> </p></td>
       <td><p><i>undefined</i> </p></td>
