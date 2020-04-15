@@ -40,23 +40,6 @@ html_sidebars = {
    '**': ['sidebartoc.html', 'sourcelink.html', 'searchbox.html']
 }
 
-# global substitutions -- THESE ONLY WORK OUTSIDE OTHER MARKUP (i.e. ``/opt/ros/kinetic/`` won't work!)
-rst_prolog = """
-.. |ubuntu_distro| replace:: xenial
-.. |ubuntu_version| replace:: 16.04
-.. kinetic replace:: kinetic
-.. ``/opt/ros/kinetic`` replace:: ``/opt/ros/kinetic``
-.. ``/etc/ros/kinetic/ros.d`` replace:: ``/etc/ros/kinetic/ros.d``
-.. ``dpkg -s ros-kinetic-boxer-firmware`` replace:: ``dpkg -s ros-kinetic-boxer-firmware``
-"""
-
-# substitutions for substitution-code-block -- THESE ONLY WORK IN CODE BLOCKS
-substitutions = [
-    ('kinetic', 'kinetic'),
-    ('|ubuntu_distro|', 'xenial'),
-    ('|fw_path|', '/opt/ros/kinetic/share/boxer_firmware/mcu.bin'),
-]
-
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
 html_show_sphinx = False
 
