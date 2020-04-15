@@ -5,7 +5,7 @@ Mapping & Navigation with Boxer
 
     Before you can run the commands in this tutorial, make sure to install Boxer's navigation packages:
 
-    .. substitution-code-block:: bash
+    .. code-block:: bash
 
         sudo apt-get install ros-kinetic-boxer-navigation
 

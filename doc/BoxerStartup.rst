@@ -14,7 +14,7 @@ set up important environment variables such as ``PATH``, ``PYTHONPATH``, and ``C
 
 The standard system-wide setup file is in ``opt``:
 
-.. substitution-code-block:: bash
+.. code-block:: bash
 
     source /opt/ros/kinetic/setup.bash
 

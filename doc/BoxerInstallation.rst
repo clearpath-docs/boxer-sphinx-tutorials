@@ -38,7 +38,7 @@ Installing the Packages
 Now that your computer is configured to use Clearpath's deb repository, you can install the Boxer packages needed
 for this tutorial by running the following command:
 
-.. substitution-code-block :: bash
+.. code-block :: bash
 
     sudo apt-get install ros-kinetic-boxer-desktop
 
