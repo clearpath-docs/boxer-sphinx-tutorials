@@ -40,7 +40,7 @@ for this tutorial by running the following command:
 
 .. substitution-code-block :: bash
 
-    sudo apt-get install ros-|ros_distro|-boxer-desktop
+    sudo apt-get install ros-kinetic-boxer-desktop
 
 
 Installing from Source

@@ -10,9 +10,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.extlinks',
     'sphinx.ext.doctest',
-    'sphinx.ext.viewcode',
-    'sphinx-prompt',
-    'sphinx_substitution_extensions'
+    'sphinx.ext.viewcode'
 ]
 
 extlinks = {
@@ -42,19 +40,19 @@ html_sidebars = {
    '**': ['sidebartoc.html', 'sourcelink.html', 'searchbox.html']
 }
 
-# global substitutions -- THESE ONLY WORK OUTSIDE OTHER MARKUP (i.e. ``/opt/ros/|ros_distro|/`` won't work!)
+# global substitutions -- THESE ONLY WORK OUTSIDE OTHER MARKUP (i.e. ``/opt/ros/kinetic/`` won't work!)
 rst_prolog = """
 .. |ubuntu_distro| replace:: xenial
 .. |ubuntu_version| replace:: 16.04
-.. |ros_distro| replace:: kinetic
-.. |ros_path| replace:: ``/opt/ros/kinetic``
-.. |rosd_path| replace:: ``/etc/ros/kinetic/ros.d``
-.. |dpkg_s_firmware| replace:: ``dpkg -s ros-kinetic-boxer-firmware``
+.. kinetic replace:: kinetic
+.. ``/opt/ros/kinetic`` replace:: ``/opt/ros/kinetic``
+.. ``/etc/ros/kinetic/ros.d`` replace:: ``/etc/ros/kinetic/ros.d``
+.. ``dpkg -s ros-kinetic-boxer-firmware`` replace:: ``dpkg -s ros-kinetic-boxer-firmware``
 """
 
 # substitutions for substitution-code-block -- THESE ONLY WORK IN CODE BLOCKS
 substitutions = [
-    ('|ros_distro|', 'kinetic'),
+    ('kinetic', 'kinetic'),
     ('|ubuntu_distro|', 'xenial'),
     ('|fw_path|', '/opt/ros/kinetic/share/boxer_firmware/mcu.bin'),
 ]
