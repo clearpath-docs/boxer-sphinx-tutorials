@@ -19,7 +19,7 @@ If you are working in a simulation, bring up Boxer using the following command:
 
 .. code-block:: bash
 
-    roslaunch boxer_gazebo boxer_race.launch
+    roslaunch boxer_gazebo boxer_world.launch
 
 This will create a simulated Boxer with a front-mounted laser scanner.
 

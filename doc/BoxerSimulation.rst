@@ -10,7 +10,8 @@ your Boxer around.
 
 .. note::
 
-  Before you can use this tutorial, make sure you have :doc:`installed Boxer's software <BoxerInstallation>`
+  Before you can use this tutorial, make sure you have :doc:`installed Boxer's software <BoxerInstallation>`,
+  including the simulation package
 
 
 Launch Gazebo
