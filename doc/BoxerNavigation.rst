@@ -5,9 +5,9 @@ Mapping & Navigation with Boxer
 
     Before you can run the commands in this tutorial, make sure to install Boxer's navigation packages:
 
-    .. substitution-code-block:: bash
+    .. code-block:: bash
 
-        sudo apt-get install ros-|ros_distro|-boxer-navigation
+        sudo apt-get install ros-kinetic-boxer-navigation
 
 This section explains how to use three different navigation modes for Boxer.
 
