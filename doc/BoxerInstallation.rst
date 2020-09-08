@@ -44,9 +44,9 @@ for this tutorial by running the following command:
 
 If you plan on simulating Boxer in Gazebo, you must also run
 
-.. substitution-code-block :: bash
+.. code-block :: bash
 
-    sudo apt-get install ros-|ros_distro|-boxer-simulation
+    sudo apt-get install ros-kinetic-boxer-simulation
 
 
 Installing from Source
