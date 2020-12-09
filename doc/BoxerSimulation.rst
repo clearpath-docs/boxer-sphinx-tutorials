@@ -115,3 +115,33 @@ in rad/s.
       float64 x
       float64 y
       float64 z
+
+You can also use a game controller to drive your robot.  Connect your controller using either a USB cable or Bluetooth
+as appropriate and then launch the teleop node by running:
+
+.. code-block:: bash
+
+  roslaunch boxer_control teleop.launch joy_dev:=/dev/input/js0
+
+Replace ``/dev/input/js0`` with the joy device you wish to use as input.  By default ``boxer_control`` accepts input
+from ``/dev/input/ds4x`` unless another device is specified.  If you use a PS4 controller, you can install the
+``python-ds4drv`` package through apt to install the appropriate udev rules to map your PS4 controller's ``js*`` device
+to ``/dev/input/ds4x``:
+
+.. code-block:: bash
+
+  sudo apt-get install python-ds4drv
+
+If you use a different game controller, e.g. an Xbox controller or Logitech F710 you will need to specify the device
+using the ``joy_dev:=/dev/input/js*`` argument, described earlier.
+
+Regardless of the controller, Axis 0 controls the robot's steering, Axis 1 controls the forward/backward velocity,
+and button 4 acts as enably.  On common controllers these correspond to the following physical controls:
+
+============= ==================================== ===== ===== =========
+Axis/Button   Physical Input                       PS4   F710  Xbox One
+============= ==================================== ===== ===== =========
+Axis 0        Left thumb stick horizontal          LJ    LJ    LJ
+Axis 1        Left thumb stick vertical            LJ    LJ    LJ
+Button 4      Left shoulder button or trigger      L1    LB    LB
+============= ==================================== ===== ===== =========
