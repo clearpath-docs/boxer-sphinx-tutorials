@@ -1,13 +1,22 @@
-Mapping & Navigation with Boxer
-===================================
+Basic Mapping & Navigation with Boxer
+======================================
 
 .. note::
 
-    Before you can run the commands in this tutorial, make sure to install Boxer's navigation packages:
+    Boxer includes the latest autonomy software from Otto, including `Fleet Manager <https://ottomotors.com/fleet-manager>`_.
 
-    .. code-block:: bash
+    Please refer to `Otto Motors' documentation <https://help.ottomotors.com>`_ and the Otto 100 user manual
+    for details on how to use Otto's advanced autonomy software
 
-        sudo apt-get install ros-kinetic-boxer-navigation
+This page explains how to use basic navigation demos with Boxer.  These examples can be used with :doc:`BoxerSimulation`
+or with the physical robot.  Note that if you are using the physical Boxer you also have access to the much more
+advanced Otto autonomy software.
+
+Before following this tutorial, make sure you have installed the Boxer Navigation package:
+
+.. code-block:: bash
+
+    sudo apt-get install ros-noetic-boxer-navigation
 
 This section explains how to use three different navigation modes for Boxer.
 
@@ -19,9 +28,9 @@ If you are working in a simulation, bring up Boxer using the following command:
 
 .. code-block:: bash
 
-    roslaunch boxer_gazebo boxer_world.launch
+    roslaunch boxer_gazebo boxer_race.launch
 
-This will create a simulated Boxer with a front-mounted laser scanner.
+This will spawn Boxer in a relatively enclosed environment
 
 .. image:: graphics/boxer_gazebo_race.png
     :alt: Boxer in its simulated environment

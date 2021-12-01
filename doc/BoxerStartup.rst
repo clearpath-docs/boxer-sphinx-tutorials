@@ -16,7 +16,7 @@ The standard system-wide setup file is in ``opt``:
 
 .. code-block:: bash
 
-    source /opt/ros/kinetic/setup.bash
+    source /opt/ros/noetic/setup.bash
 
 When you run this command, you'll have access to `rosrun`, `roslaunch`, and all the other tools and packages
 installed on your system from debian packages.
@@ -39,21 +39,21 @@ modification points for altering how Boxer launches.
 Launch Files
 ------------
 
-The second major modification point is the ``/etc/ros/kinetic/ros.d`` directory. This location contains the
+The second major modification point is the ``/etc/ros/noetic/ros.d`` directory. This location contains the
 launch files associated with the ``ros`` background job. If you add launch files here, they will be launched with
 Boxer's startup.
 
 However, it's important to note that in the default configuration, any launch files you add may only reference ROS
-software installed in ``/opt/ros/kinetic``. If you want to launch something from workspace in
-the home directory, you must change ``/etc/ros/setup.bash`` to source that workspace's setup file rather than the
-one from ``opt``.
+software installed in ``/opt/ros/noetic``. If you want to launch something from workspace in
+the home directory, you must edit ``/etc/ros/setup.bash`` to source that workspace's setup file after the
+one from ``/opt``.
 
 
 Adding URDF
 -----------
 
 There are two possible approaches to augmenting Boxer's URDF. The first is that you may simply set the
-``MOOSE_URDF_EXTRAS`` environment variable in ``/etc/ros/setup.bash``. By default, it points to an empty dummy file,
+``BOXER_URDF_EXTRAS`` environment variable in ``/etc/ros/setup.bash``. By default, it points to an empty dummy file,
 but you can point it to a file of additional links and joints which you would like mixed into Boxer's URDF (via
 xacro) at runtime.
 

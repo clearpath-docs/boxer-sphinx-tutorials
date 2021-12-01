@@ -21,7 +21,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 project = u'Boxer Tutorials'
-copyright = u'2015, Clearpath Robotics'
+copyright = u'2021, Clearpath Robotics'
 
 # Get version number from package.xml.
 tree = etree.parse('../package.xml')

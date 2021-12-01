@@ -1,23 +1,32 @@
 Setting Up Boxer's Network
 ===========================
 
-Boxer is equipped with an 802.11b/g/n compatible Wi-Fi module. On currently-shipping units, this
-is a `Microhard PX2`__.  Boxer does not come equipped with a bluetooth module by default, though
-an adapter can be connected to the onboard `Advantech ARK-3520P`__ PC.
-
-.. _Microhard: http://www.microhardcorp.com/pX2.php
-__ Microhard_
-
-.. _Advantech: https://advdownload.advantech.com/productfile/PIS/ARK-3520P/Product%20-%20Datasheet/ARK-3520P_DS(03.21.19)20190321143448.pdf
-__ Advantech_
+Boxer is equipped with an external PC mounted to the top of the robot, referred to as the "Backpack PC".  The robot is
+also equipped with an internal PC.  This page explains how to configure the networking for the Backpack PC only.  For
+instructions on connecting the internal PC to a network, refer to the
+`Otto 100 Documentation <https://help.ottomotors.com>`_
 
 
-First Connection
-----------------
+Enabling the Otto App
+----------------------
+
+Many of Boxer's features are still accessible via the Otto App.  This requires configuring the base platform to connect
+to your wi-fi network.  To do this, connect your laptop to the diagnostic ethernet port on the rear of the robot.
+Configure your laptop to have a static IP address on the 10.255.255.0/16 subnet, e.g. 10.255.255.100.
+
+Open a web browser and navigate to http://10.255.255.1:8090.  You will be promted to enter your network credentials.
+
+Refer to `Otto Motors' documentation <https://help.ottomotors.com/latest/commissioning/connecting-a-robot-to-the-network>`_
+for more details on configuring the base platform's networking.
+
+
+Connecting to the Backpack PC
+------------------------------
 
 By default, Boxer's wireless is in client mode, looking for the wireless network at the Clearpath factory. In
 order to set it up to connect to your own network, you'll have to open up the chassis and connect a network cable to
-the PC's ``STATIC`` port. The other end of this cable should be connected to your laptop, and you should give yourself an IP address in the ``192.168.131.x`` space, such as ``192.168.131.50``. Then, make the connection to Boxer's default
+the PC's ``STATIC`` port. The other end of this cable should be connected to your laptop, and you should give yourself
+an IP address in the ``192.168.131.x`` space, such as ``192.168.131.100``. Then, make the connection to Boxer's default
 static IP:
 
 .. code-block:: bash
@@ -27,29 +36,59 @@ static IP:
 The default password is ``clearpath``. You should now be logged into Boxer as the administrator user.
 
 
-Connecting to Wifi Access Point
---------------------------------
+Changing the Default Password
+-----------------------------
 
-Boxer's standard wireless network manager is wicd_. To connect to an access point in your lab, run:
+.. Note::
+
+  All Clearpath robots ship from the factory with their login password set to ``clearpath``.  Upon receipt of your
+  robot we recommend changing the password.
+
+To change the password to log into your robot, run the
 
 .. code-block:: bash
 
-    wicd-curses
+  passwd
 
-You should see a browsable list of networks which the robot has detected. Use arrow keys to select the one you
-would like to connect to, and then press the right arrow to configure it. You can enter your network's password
-near the bottom of the page, and note that you must select the correct encryption scheme; most modern networks
-use ``WPA1/2 Passphrase``, so if that's you, make sure that option is selected. You also likely want to select
-the option to automatically reconnect to this network, so that Boxer will be there for you on your wireless
-automatically in the future.
+command.  This will prompt you to enter the current password, followed by the new password twice.  While typing the
+passwords in the ``passwd`` prompt there will be no visual feedback (e.g. "*" characters).
 
-When you're finished, press F10 to save, and then C to connect.
+To further restrict access to your robot you can reconfigure the robot's SSH service to disallow logging in with a
+password and require SSH certificates to log in.  This_ tutorial covers how to configure SSH to disable password-based
+login.
 
-Wicd will tell you in the footer what IP address it was given by your lab's access point, so you can now log out,
-remove the network cable, and reconnect over wireless. When you've confirmed that all this is working as expected,
-close up Boxer's chassis.
+.. _This: https://linuxize.com/post/how-to-setup-passwordless-ssh-login/
 
-.. _wicd: https://launchpad.net/wicd
+Connecting to Wifi Access Point
+--------------------------------
+
+Boxer uses ``netplan`` for configuring its wired and wireless interfaces.  To connect Boxer to your wireless network,
+create the file ``/etc/netplan/60-wireless.yaml`` and fill in the following:
+
+.. code-block:: yaml
+
+    network:
+      wifis:
+        # Replace wlp2s0 with the name of the wireless network device, e.g. wlan0 or wlp3s0 as needed
+        # Fill in the SSID and PASSWORD fields as appropriate.  The password may be included as plain-text
+        # If you have multiple wireless cards you may include a block for each device.
+        # For more options, see https://netplan.io/reference/
+        wlp2s0:
+          optional: true
+          access-points:
+            SSID_GOES_HERE:
+              password: PASSWORD_GOES_HERE
+          dhcp4: true
+          dhcp4-overrides:
+            send-hostname: true
+
+Once configured, run
+
+.. code-block:: bash
+
+    sudo netplan apply
+
+to bring up your wireless connection.  Running ``ip a`` will show all active connections and their IP addresses.
 
 
 .. _remote:
@@ -105,70 +144,68 @@ run:
 
     rqt
 
+.. _bridge:
 
-Advanced: Hosting a Wifi Access Point
+Reconfiguring the Network Bridge
 -------------------------------------
 
-The default network manager, ``wicd``, only supports joining existing networks. It does not support creating its own wireless AP.
-However, there is experimental support in Boxer for a modern network manager called connman_, which does.
+In the event you must modify Boxer's ethernet bridge, you can do so by editing the Netplan configuration file
+found at ``/etc/netplan/50-clearpath-bridge.yaml``:
 
-.. _connman: https://01.org/connman
+.. code-block:: yaml
 
-.. warning::
+    network:
+    version: 2
+    renderer: networkd
+    ethernets:
+      # Configure eno1 to communicate with the Otto 100 internal PC via the attachment port
+      eno1:
+        dhcp4: no
+        dhcp6: no
+        addresses:
+          - 10.252.252.100/16
 
-             You are unlikely to damage your hardware by switching Boxer from wicd to connman, but it's possible
-             you could end up with a platform which will need to be `reflashed back to the factory state` in
-             order to be usable. If you're comfortable with this and have backed up your data, proceed.
+      # Bridge all the remaining ethernet ports together
+      bridge_eth:
+        dhcp4: no
+        dhcp6: no
+        match:
+          name: eth*
+      bridge_enp:
+        dhcp4: no
+        dhcp6: no
+        match:
+          name: enp*
+      bridge_enx:
+        dhcp4: no
+        dhcp6: no
+        match:
+          name: enx*
+    bridges:
+      br0:
+        # yes, allow DHCP4 connections on the bridge; this allows the backpack PC to accept
+        # wired internet connections, e.g. for installing updates
+        dhcp4: yes
+        dhcp6: no
+        interfaces: [bridge_eth, bridge_enp, bridge_enx]
+        addresses:
+          # Give the bridge the static 192.168.131.1 address for its internal ROS network
+          # Any IP-based ROS sensors connected to the backpack should use the 192.168.131.0/24 subnet
+          - 192.168.131.1/24
 
-Connman is available through the Ubuntu software repositories, and can be installed by running the following command:
+This file will create a bridged interface called ``br0`` that will have a static address of 192.168.131.1, but will
+also be able to accept a DHCP lease when connected to a wired router.  By default all network ports named ``en*`` and
+``eth*`` are added to the bridge.  This includes all common wired port names, such as:
 
-.. code-block:: bash
+- ``eth0``
+- ``eno1``
+- ``enx0123456789ab``
+- ``enp3s0``
+- etc...
 
-    sudo apt-get install connman
+To include/exclude additional ports from the bridge, edit the ``match`` fields, or add additional ``bridge_*`` sections
+with their own ``match`` fields, and add those interfaces to the ``interfaces: [bridge_en, bridge_eth]`` line near the
+bottom of the file.
 
-Note that there is a similarly-named ``conman`` package, which is a serial console manager, not a network manager.  Be
-sure to include two N's in ``connman``.
-
-Once connman is installed, edit the upstart job file in ``/etc/init/connman.conf``. Suggested configuration:
-
-.. code-block:: bash
-
-    description "Connection Manager"
-     
-    start on started dbus
-    stop on stopping dbus
-     
-    console log
-    respawn
-     
-    exec connmand --nobacktrace -n -c /etc/connman/main.conf -I eth1 -I hci0
-
-And edit connman's general configuration in ``/etc/connman/main.conf``. Suggested:
-
-.. code-block:: bash
-
-    [General]
-    TetheringTechnologies = wifi
-    PersistentTetheringMode = true
-
-Now, use the connmanctl command-line interface to set up an AP, which connman calls "tethering" mode:
-
-.. code-block:: bash
-
-    $ connmanctl
-    connmanctl> enable wifi
-    connmanctl> tether wifi on Boxer clearpath
-
-If you want to use connman to connect to another AP rather than host:
-
-.. code-block:: bash
-
-    $ connmanctl
-    connmanctl> tether wifi off
-    connmanctl> agent on
-    connmanctl> scan wifi
-    connmanctl> services
-    connmanctl> connect wifi_12345_67890_managed_psk
-
-Use as the argument to ``connect`` one of the services listed in the ``services`` output. You will be interrogated for
-the network's password, which is then cached in ``/var/lib/connman/``.
+We do not recommend changing the static address of the bridge to be anything other than ``192.168.131.1``; changing
+this may cause sensors that communicate over ethernet (e.g. lidars, cameras, GPS arrays) from working properly.

@@ -1,7 +1,7 @@
 Simulating Boxer
 =================
 
-.. image:: graphics/boxer_sim_banner.png
+.. image:: graphics/boxer_gazebo_banner.png
     :alt: Boxer Simulation
 
 Whether you actually have a Boxer robot or not, the Boxer simulator is a great way to get started with ROS
@@ -10,8 +10,8 @@ your Boxer around.
 
 .. note::
 
-  Before you can use this tutorial, make sure you have :doc:`installed Boxer's software <BoxerInstallation>`,
-  including the simulation package
+  Before you can use this tutorial, make sure you have :doc:`installed Boxer's software <BoxerPackages>`,
+  including the ``boxer_simulation`` package.
 
 
 Launch Gazebo
@@ -63,8 +63,8 @@ You should see rviz appear:
 .. image:: graphics/boxer_viz.png
     :alt: Boxer with laser scanner in rviz.
 
-The rviz display only shows what the robot knows about its world, which presently, is nothing. Because the
-robot doesn't yet know about the barriers which exist in its Gazebo world, they're not shown here.
+The visualization shows the depth data from the base platform's RealSense camera (the rainbow-colored points) as well
+as the data from the front and rear lidars.
 
 
 Controlling Boxer
@@ -124,9 +124,9 @@ as appropriate and then launch the teleop node by running:
   roslaunch boxer_control teleop.launch joy_dev:=/dev/input/js0
 
 Replace ``/dev/input/js0`` with the joy device you wish to use as input.  By default ``boxer_control`` accepts input
-from ``/dev/input/ds4x`` unless another device is specified.  If you use a PS4 controller, you can install the
+from ``/dev/input/ps4`` unless another device is specified.  If you use a PS4 controller, you can install the
 ``python-ds4drv`` package through apt to install the appropriate udev rules to map your PS4 controller's ``js*`` device
-to ``/dev/input/ds4x``:
+to ``/dev/input/ps4``:
 
 .. code-block:: bash
 
@@ -145,3 +145,43 @@ Axis 0        Left thumb stick horizontal          LJ    LJ    LJ
 Axis 1        Left thumb stick vertical            LJ    LJ    LJ
 Button 4      Left shoulder button or trigger      L1    LB    LB
 ============= ==================================== ===== ===== =========
+
+
+Additional Simulation Environments
+-----------------------------------
+
+Boxer is supported by Clearpath's `additional simulation environments <https://github.com/clearpathrobotics/cpr_gazebo>`_.
+To use these environments, clone the repository into your workspace and build it:
+
+.. code-block:: bash
+
+    cd $HOME/catkin_ws/src
+    git clone https://github.com/clearpathrobotics/cpr_gazebo.git -b noetic-devel
+    cd ..
+    rosdep install --from-paths src --ignore-src --rosdistro=noetic -r
+    catkin_make
+    source devel/setup.bash
+
+Note that you may get warnings about missing dependencies for e.g. ``warthog_gazebo`` or ``jackal_gazebo``.  These
+dependencies are only needed if you intend to simulate Clearpath's other robotic platforms in these environments.
+If you only intend to simulate Boxer, you can safely ignore these missing dependencies.
+
+Because Boxer is an indoor platform, it is only usable in the ``cpr_office_gazebo`` and ``cpr_obstacle_gazebo`` environments
+
+To launch Boxer in the office environment, use
+
+.. code-block:: bash
+
+    roslaunch cpr_office_gazebo office_world.launch platform:=boxer
+
+.. image:: graphics/boxer_office_gazebo.png
+  :alt: Boxer in the office simulation
+
+To launch Boxer in the obstacle environment, use
+
+.. code-block:: bash
+
+    roslaunch cpr_obstacle_gazebo cpr_obstacle_world.launch  platform:=boxer
+
+.. image:: graphics/boxer_obstacle_gazebo.png
+  :alt: Boxer in the obstacle simulation

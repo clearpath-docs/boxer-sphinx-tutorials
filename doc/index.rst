@@ -1,6 +1,11 @@
 Boxer UGV Tutorials
 ======================
 
+.. Note::
+
+  This guide is for the Boxer 2.4, released in November 2021.  The Boxer 2.4 is *not* compatible with the older Boxer.
+  Owners of previous-generation Boxers should refer to the documentation `here <http://www.clearpathrobotics.com/assets/guides/kinetic/boxer/>`_
+
 .. image:: graphics/boxer_banner.png
     :alt: Boxer Robot
 
@@ -19,8 +24,8 @@ understanding how to effectively operate Boxer in simulation is valuable whether
 phase with software you intend to ultimately deploy on a real Boxer, or you do not have one and are
 simply exploring the platform's capabilities.
 
-:doc:`BoxerNavigation` explains how to make use of Boxer's onboard sensors to do basic mapping and localization using
-GMapping's SLAM (Simultaneous Localization And Mapping) algorithms.
+:doc:`BoxerOverview` gives a comprehensive look at the physical Boxer and how the backpack PC communicates with
+the underlying platform
 
 :doc:`Driving <BoxerDriving>` covers how to teleoperate Boxer using the remote control, a well as safety procedures
 for operating the real robot.  Anyone working with a physical robot should be familiar with this section.
@@ -34,18 +39,13 @@ skip the introductory chapters and jump straight to these ones.
     :maxdepth: 3
     :caption: Contents
 
-    Overview <self>
+    Introduction <self>
+    BoxerOverview
     BoxerInstallation
+    BoxerPackages
     BoxerSimulation
     BoxerNavigation
     BoxerDriving
     BoxerNetwork
     BoxerStartup
     BoxerUpdate
-
-.. toctree::
-    :titlesonly:
-    :hidden:
-    :caption: Boxer Packages
-
-    BoxerPackages

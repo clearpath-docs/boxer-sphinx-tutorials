@@ -44,31 +44,37 @@ If your controller is not pairing correctly with the robot, you can re-pair it b
 The controller should now be paired.  Test it by pressing L1 and using the left control stick.
 
 
-E-Stop Buttons
--------------------
+E-Stop Buttons and Safety Lidar
+--------------------------------
 
-Boxer is equipped with 1 emergency stop button, located on the front the robot.  Pressing this
-button will cut power to the motors.  To disengage the emergency
-stop, simply twist the button in the direction indicated by the arrows.
-
-.. note::
-
-    Some newer Boxers have an additional emergency stop button located on the back of the robot.  This button operates
-    exactly the same, and pressing either button will cut all power to the robot's drive motors.
+Boxer is equipped with a large, red emergency-stop button on the rear of the robot.  Pressing this button will
+cut power to the robot's motors.  To release the e-stop, grasp the button firmly and pull it back out.  Once the
+button is released, press the E-Stop Reset button, located above the E-Stop, beside the charging port.
 
 Whenever you need to perform maintenance on the robot we recommend engaging the emergency-stop if the robot cannot be
 fully powered down.
+
+Boxer is also equipped with safety lidars in the front and back that will cause the robot to lose power if a collision
+is predicted, or if the robot is operating too fast in an enclosed environment.  The safety stop is automatic, and is
+not controlled through any ROS topics.  Once the danger has passed the safety stop will automatically disengage.
+
+If Boxer seems to be stuck in a safety stop, check that there is no dirt or debris on either the front or rear
+lidars.  Wipe the lidars down using an appropriate lidar wipe or soft cloth to remove any dirt.
 
 
 Body Lights
 --------------
 
 Boxer includes RGB LED strips around its body.  These lights express system status according to the table below.
-In the absence of any of the low-level conditions, they can be commanded from ROS to display indications from autonomy
-or other high-level software.
 
-=======================   ========================================================================================================================================================================
-Color                     Meaning
-=======================   ========================================================================================================================================================================
-??? TODO                  ??? TODO
-=======================   ========================================================================================================================================================================
++-----------------+--------------------------------------------------------------------------------+
+| Color & Pattern | Meaning                                                                        |
++=================+================================================================================+
+| Solid Red       | Robot is starting up                                                           |
++-----------------+--------------------------------------------------------------------------------+
+| Flashing Red    | Robot is E-Stopped or Safety Stopped                                           |
++-----------------+--------------------------------------------------------------------------------+
+| Circling Blue   | Base platform is in Manual mode, allowing it to be controlled via the ROS2 API |
++-----------------+--------------------------------------------------------------------------------+
+
+At present these lights are not controllable through any ROS topics, but this is planned for a future update.
