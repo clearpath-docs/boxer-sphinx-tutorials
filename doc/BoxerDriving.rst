@@ -63,12 +63,5 @@ fully powered down.
 Body Lights
 --------------
 
-Boxer includes RGB LED strips around its body.  These lights express system status according to the table below.
-In the absence of any of the low-level conditions, they can be commanded from ROS to display indications from autonomy
-or other high-level software.
-
-=======================   ========================================================================================================================================================================
-Color                     Meaning
-=======================   ========================================================================================================================================================================
-??? TODO                  ??? TODO
-=======================   ========================================================================================================================================================================
+Boxer includes RGB LED strips around its body.  These lights express system status, but in the absence of any of the
+low-level conditions, they can be commanded from ROS to display indications from autonomy or other high-level software.
