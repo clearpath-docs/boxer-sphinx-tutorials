@@ -109,7 +109,7 @@ Finally, build the workspace:
 If you are setting up a Boxer backpack PC, see :ref:`backpack-setup` for additional steps needed.
 
 
-Boxer Environent Variables
+Boxer Environment Variables
 ---------------------------
 
 Like all Clearpath robots, Boxer supports additional customization through the use of environment variables.
