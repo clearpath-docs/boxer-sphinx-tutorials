@@ -45,7 +45,7 @@ Once you have added all of the new apt sources, simply run
     sudo apt-get install ros-noetic-boxer-description ros-noetic-boxer-desktop ros-noetic-boxer-simulation ros-noetic-boxer-robot
 
 
-Note that the ``boxer_manupulation`` packages are not available as .deb packages, because they have additional
+Note that the ``boxer_manipulation`` packages are not available as .deb packages, because they have additional
 dependencies that can only be installed from source.  See below for details on building packages from source, and
 refer to `boxer_manipulation on Github <https://github.com/boxer-cpr/boxer_manipulation>`_ for more details on using
 these packages.
@@ -84,7 +84,7 @@ Then clone the necessary packages from Github.  Depending on your needs, not all
     git clone https://github.com/boxer-cpr/boxer_robot.git
 
     # manipulation packages are only needed if your robot is equipped with a robotic arm or gripper
-    git clone https://github.com/boxer-cpr/boxer_manupulation.git
+    git clone https://github.com/boxer-cpr/boxer_manipulation.git
 
 Install the necessary dependencies using ``rosdep``
 
