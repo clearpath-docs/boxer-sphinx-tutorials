@@ -49,3 +49,4 @@ skip the introductory chapters and jump straight to these ones.
     BoxerNetwork
     BoxerStartup
     BoxerUpdate
+    BoxerTests
