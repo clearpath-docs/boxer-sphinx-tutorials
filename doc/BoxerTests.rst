@@ -64,6 +64,10 @@ This test:
 - Publishes to the ``/cmd_vel`` ROS topic to send drive commands to rotate the robot.
 - The user will be asked to verify that the robot rotates 2 full revolutions.
 
+.. note::
+
+  The **Rotate Test** rotates the robot using the IMU's Gyroscope data, which inherently will not be 100% accurate. Therefore, some undershoot/overshoot is to be expected.
+
 **Drive Test**
 
 The **Drive Test** drives the robot forward 1 meter and backward 1 meter, and checks that the motors and EKF odometry are working properly.
@@ -73,3 +77,7 @@ This test:
 - Subscribes to the ``/odom`` ROS topic to receive linear displacement estimations from the EKF odometry. The robot will drive forward until 1 meter is estimated, then it will drive backward until 1 meter is estimated.
 - Publishes to the ``/cmd_vel`` ROS topic to send drive commands to drive the robot.
 - The user will be asked to verify that the robot drives forward 1 meter and drives backward 1 meter.
+
+.. note::
+
+  The **Drive Test** drives the robot using the Odometry data, which inherently will not be 100% accurate. Therefore, some undershoot/overshoot is to be expected.
