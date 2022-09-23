@@ -157,11 +157,21 @@ The following table lists the available environment variables and their effect o
             <p>Customizes the shape of the backpack PC added to the URDF. Must be one of the following:
             <ul>
               <li><tt>evs-2000</tt> (default): the Vecow EVS-2000 series computer (or equivalent case)</li>
-              <li><tt>ecx-1000</tt>: the Vecow ECX-1000 series computer (or equivalent case)</li>
+              <li><tt>ecx-2000</tt>: the Vecow ECX-2000 series computer (or equivalent case)</li>
               <li><tt>mini-itx</tt>: a common mini-ITX mini desktop enclosure</li>
             </ul>
             </p>
           </td>
+        </tr>
+        <tr>
+          <td><span class="anchor" id="line-11"></span><p><tt>BOXER_PC_XYZ</tt> </p></td>
+          <td><tt>0 0 0</tt></td>
+          <td><p>Defines the position of the backpack computer in the URDF relative to the Boxer's <tt>top_plate_link</tt></p></td>
+        </tr>
+        <tr>
+        <td><span class="anchor" id="line-11"></span><p><tt>BOXER_PC_RPY</tt> </p></td>
+          <td><tt>0 0 0</tt></td>
+          <td><p>Defines the orientation of the backpack computer in the URDF relative to the Boxer's <tt>top_plate_link</tt></p></td>
         </tr>
         <tr>
           <td><span class="anchor" id="line-11"></span><p><tt>BOXER_GPIO</tt> </p></td>
