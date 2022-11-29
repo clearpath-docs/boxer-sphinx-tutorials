@@ -11,7 +11,7 @@ Updating the Base Platform
 
 Otto Motors periodically releases updates for the Otto 100, which can be applied to Boxer's base platform.
 
-Please refer to `Otto Motors' documentation <https://help.ottomotors.com/latest/commissioning/system-deployment/installing-robot-software>`_
+Please refer to `Otto Motors' documentation <https://docs.ottomotors.com/en/30495-30532-installing-robot-software.html>`_
 for details on applying software updates.
 
 At the time of writing, the latest version of the Otto 100 software supported by the Boxer's Noetic backpack is 2.22.3.
