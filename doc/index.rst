@@ -1,6 +1,10 @@
 Boxer UGV Tutorials
 ======================
 
+.. Warning::
+
+  These tutorials have been superceded. Find the latest Boxer tutorials at `docs.clearpathrobotics.com <https://docs.clearpathrobotics.com/docs/robots/boxer/tutorials_boxer>`_.
+
 .. Note::
 
   This guide is for the Boxer 2.4, released in November 2021.  The Boxer 2.4 is *not* compatible with the older Boxer.
