@@ -1,5 +1,12 @@
 # Tutorial for Boxer
 
+---
+
+**Note:**
+These tutorials have been superceded. Find the latest Boxer tutorials at [docs.clearpathrobotics.com](https://docs.clearpathrobotics.com/docs/robots/boxer/tutorials_boxer).
+
+---
+
 ## Setup
     sudo apt-get install texlive-full texlive-xetex texmaker python-pip latexmk
     pip3 install sphinx
